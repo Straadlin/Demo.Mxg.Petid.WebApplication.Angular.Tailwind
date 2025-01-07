@@ -1,0 +1,180 @@
+<div class="container mx-auto p-6 max-w-4xl dark:bg-gray-900">
+  @if(loading) {
+    <div class="mb-8 text-center">
+      <h1 class="text-3xl font-bold dark:text-white">
+        Cargando información...
+      </h1>
+      <p class="dark:text-white mt-2">Este proceso puede demorar unos segundos, favor de esperar...</p>
+    </div>
+  }
+  @else {
+    @if (petData) {
+      <div class="mb-8">
+        <div id="carousel" class="relative w-full">
+          <div class="overflow-hidden relative h-64 rounded-lg">
+            @for (
+              photo of petData.data.pictures;
+              track petData?.data?.pictures
+            ) {
+              @if (currentPhoto === photo) {
+                <div class="absolute inset-0 transition-opacity duration-700">
+                  <img
+                    [src]="photo?.uri"
+                    alt="Pet photo"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              }
+            }
+          </div>
+
+          <button
+            class="absolute top-0 left-0 px-4 py-2 bg-gray-800 text-white hover:bg-gray-700 rounded-r-lg"
+            (click)="prevPhoto()"
+          >
+            ‹
+          </button>
+
+          <button
+            class="absolute top-0 right-0 px-4 py-2 bg-gray-800 text-white hover:bg-gray-700 rounded-l-lg"
+            (click)="nextPhoto()"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-8 text-center">
+        <h1 class="text-3xl font-bold dark:text-white">
+          {{ petData.data.name }}
+        </h1>
+        <p class="dark:text-white mt-2">{{ petData.data.notes }}</p>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold dark:text-white mb-4">
+          Caracteristicas de la Mascota
+        </h2>
+        <table class="w-full text-left border-collapse border border-gray-200">
+          <thead class="bg-gray-700">
+            <tr>
+              <th class="px-4 py-2 border border-gray-200">Característica</th>
+              <th class="px-4 py-2 border border-gray-200">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="px-4 py-2 border border-gray-200">{{ "Nombre" }}</td>
+              <td class="px-4 py-2 border border-gray-200">
+                {{ petData.data.name || "No hay información." }}
+              </td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2 border border-gray-200">{{ "Edad" }}</td>
+              <td class="px-4 py-2 border border-gray-200">
+                {{
+                  getAgeFromBirthdate(petData.data.birthdate) + " año(s)" ||
+                    "No hay información."
+                }}
+              </td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2 border border-gray-200">{{ "Genero" }}</td>
+              <td class="px-4 py-2 border border-gray-200">
+                {{
+                  petData.data.gender?.code === "PMALGND"
+                    ? "Macho"
+                    : "No hay información."
+                }}
+              </td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2 border border-gray-200">{{ "Peso" }}</td>
+              <td class="px-4 py-2 border border-gray-200">
+                {{ petData.data.weight + ' kg.' || "No hay información." }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold text-white mb-4">
+          Historial de Vacunación y Medicamentos
+        </h2>
+        <table class="w-full text-left border-collapse border border-gray-200">
+          <thead class="bg-gray-700">
+            <tr>
+              <th class="px-4 py-2 border border-gray-200">
+                Fecha de Aplicación
+              </th>
+              <th class="px-4 py-2 border border-gray-200">
+                Nombre de la Vacuna
+              </th>
+              <th class="px-4 py-2 border border-gray-200">Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (
+              vaccine of petData.data.vaccines;
+              track petData?.data?.vaccines
+            ) {
+              <tr>
+                <td class="px-4 py-2 border border-gray-200">
+                  {{ vaccine.vaccineApplied | date: "dd/MM/yyyy" }}
+                </td>
+                <td class="px-4 py-2 border border-gray-200">
+                  {{ vaccine.name }}
+                </td>
+                <td class="px-4 py-2 border border-gray-200">
+                  {{ vaccine.detail }}
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold dark:text-white mb-4">
+          Datos de Contacto
+        </h2>
+        <table class="w-full text-left border-collapse border border-gray-200">
+          <thead class="bg-gray-700">
+            <tr>
+              <th class="px-4 py-2 border border-gray-200">Información</th>
+              <th class="px-4 py-2 border border-gray-200">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="px-4 py-2 border border-gray-200">Email</td>
+              <td class="px-4 py-2 border border-gray-200">
+                {{ petData.data.publicEmail || "No hay información." }}
+              </td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2 border border-gray-200">Número teléfonico</td>
+              <td class="px-4 py-2 border border-gray-200">
+                {{ petData.data.publicPhoneNumber || "No hay información." }}
+              </td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2 border border-gray-200">Dirección</td>
+              <td class="px-4 py-2 border border-gray-200">
+                {{ petData.data.publicAddress || "No hay información." }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    } @else {
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold text-white mb-4">
+          No se encontro información para mostrar o el ID es inválido.
+        </h2>
+      </div>
+    }
+  }
+</div>

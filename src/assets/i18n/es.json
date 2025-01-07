@@ -1,0 +1,33 @@
+{
+  "FOOTER": {
+    "ALL_RIGHTS": "Reservados todos los derechos.",
+    "ABOUT": "Acerca de",
+    "POLICY": "Política de Privacidad",
+    "CONTACT": "Contacto"
+  },
+  "HEADER": {
+    "MENU_HOME": "Inicio",
+    "MENU_SEARCH_PET_ID": "Buscar Pet-ID",
+    "MENU_PRODUCTS": "Productos",
+    "MENU_FREQUENTLY_ASKED": "Preguntas Frecuentes",
+    "MENU_ADMINISTRATION": "Administración"
+  },
+  "HOME": {
+    "TITLE": "Comparte información escencial de tu mascota",
+    "DESCRIPTION": "Con un identificador como PET-ID, podrás vincular información (no sensible) general y de historial de vacunación de tu mascota, así como otra información que pueda ser usada en caso de que tu mascota se llegue a extraviar."
+  },
+  "PET": {
+    "SEARCH": {
+      "LABEL_INSTRUCTIONS": "Busca la Información de tu Mascota por su Identificador",
+      "TEXTBOX_ENTER_MANUALLY": "Ingresa manualmente el código PET-ID",
+      "BUTTON_SEARCH": "Buscar",
+      "MESSAGE_FIELD_IS_NECESSARY": "Este campo es obligatorio.",
+      "MESSAGE_PET_ID_MUST_BE": "Deben ser de 30 a 50 caracteres, y solo se permiten letras y numeros."
+    }
+  },
+  "PRODUCT": {
+    "LIST": {
+      "BUTTON_SEARCH_ADD": "Agregar al carrito"
+    }
+  }
+}

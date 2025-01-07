@@ -1,0 +1,34 @@
+{
+  "FOOTER": {
+    "ALL_RIGHTS": "All rights reserved.",
+    "ABOUT": "About",
+    "POLICY": "Privacy Policy",
+    "CONTACT": "Contact"
+  },
+  "HEADER": {
+    "MENU_ADMINISTRATION": "Administration",
+    "MENU_FREQUENTLY_ASKED": "Frequently Asked Questions",
+    "MENU_HOME": "Home",
+    "MENU_PRODUCTS": "Products",
+    "MENU_SEARCH_PET_ID": "Search by Pet-ID"
+  },
+  "HOME": {
+    "TITLE": "Share essential information about your pet",
+    "DESCRIPTION": "With an identifier like PET-ID, you can link general (non-sensitive) information and vaccination history of your pet, as well as other information that can be used in case your pet goes missing."
+  },
+  "PET": {
+    "SEARCH": {
+      "LABEL_INSTRUCTIONS": "Search for your pet's information by its identifier",
+      "TEXTBOX_ENTER_MANUALLY": "Manually enter the PET-ID code",
+      "BUTTON_SEARCH": "Search",
+      "MESSAGE_FIELD_IS_NECESSARY": "This field is required.",
+      "MESSAGE_PET_ID_MUST_BE": "They must be 30 to 50 characters, and only letters and numbers are allowed.",
+      "BUTTON_SEARCH_ADD": "Add to cart"
+    }
+  },
+  "PRODUCT": {
+    "LIST": {
+      "BUTTON_SEARCH_ADD": "Add to cart"
+    }
+  }
+}
